@@ -1,0 +1,48 @@
+<div class="container-fluid">
+     <!-- Left Panel -->
+     <div class="row top">
+       <div class="col-md-6 bg-primary">
+         <div class="left-panel main d-flex align-items-center">
+           <!-- <img class="img-fluid rounded mb-2" loading="lazy"
+                src="../../../assets/Dr._Reddys_Laboratories_Logo.svg" width="250" height="80"
+                alt=""> -->
+                <!-- <h2 class="text-start">
+                  Data Review System<br>
+                  <span class="float-end">@Biologics</span>
+                </h2>       -->
+         </div>
+       </div>
+   
+       <!-- Right Panel -->
+       <div class="col-md-6 d-flex align-items-center justify-content-center">
+         <div class="right-panel card p-4 py-5">
+           <h3 class="text-center">Welcome back</h3>
+           <p class="text-center">Data Review System</p>
+           <div class="row gy-3 overflow-hidden">
+             <div class="col-12">
+               <div class="form-floating mb-3">
+                 <input type="email" class="form-control" name="email" id="email"
+                        placeholder="name@example.com" required>
+                 <label for="email" class="form-label">Email</label>
+               </div>
+             </div>
+             <div class="col-12">
+               <div class="form-floating mb-3">
+                 <input type="password" class="form-control" name="password"
+                        id="password" placeholder="Password" required>
+                 <label for="password" class="form-label">Password</label>
+               </div>
+             </div>
+   
+             <div class="col-12">
+               <div class="d-grid">
+                 <button class="btn btn-primary btn-lg" type="submit" (click)="login()" >Login</button>
+                 <button (click)="isVisible = !isVisible">Toggle Visibility</button>
+<div *ngIf="isVisible" [@fadeInOut]>This element fades in and out!</div>
+               </div>
+             </div>
+           </div>
+         </div>
+       </div>
+     </div>
+   </div>

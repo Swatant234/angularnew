@@ -1,0 +1,87 @@
+<div class="container mt-5 card p-3">
+     <h2 class="mb-4">Vehicle Information Form</h2>
+ 
+     <!-- Form -->
+     <form>
+       
+         <div class="row mb-3">
+             <label  class="col-sm-2 col-form-label">Brand</label>
+             <div class="col-sm-10">
+                 <input type="text" class="form-control" name="brand" placeholder="Enter Brand"  [(ngModel)]="VehiclesObj.brand" >
+             </div>
+         </div>
+         <div class="row mb-3">
+             <label  class="col-sm-2 col-form-label">Model</label>
+             <div class="col-sm-10">
+                 <input type="text" class="form-control" name="model" placeholder="Enter Model"  [(ngModel)]="VehiclesObj.model">
+             </div>
+         </div>
+         <div class="row mb-3">
+             <label  class="col-sm-2 col-form-label">Reg No</label>
+             <div class="col-sm-10">
+                 <input type="text" class="form-control" name="regNo" placeholder="Enter Registration No"  [(ngModel)]="VehiclesObj.regNo">
+             </div>
+         </div>
+         <div class="row mb-3">
+             <label class="col-sm-2 col-form-label">Daily Rate</label>
+             <div class="col-sm-10">
+                 <input type="number" class="form-control" name="dailyRate" placeholder="Enter Daily Rate"  [(ngModel)]="VehiclesObj.dailyRate">
+             </div>
+         </div>
+         <div class="row mb-3">
+          <label  class="col-sm-2 col-form-label">Year</label>
+          <div class="col-sm-10">
+              <input type="number" class="form-control"  name="year" placeholder="Enter Year"  [(ngModel)]="VehiclesObj.year">
+          </div>
+      </div>
+      <div class="row mb-3">
+          <label  class="col-sm-2 col-form-label">Color</label>
+          <div class="col-sm-10">
+              <input type="text" class="form-control"  name="color"  placeholder="Enter Color"  [(ngModel)]="VehiclesObj.color">
+          </div>
+      </div>
+      <div class="row mb-3">
+          <label  class="col-sm-2 col-form-label">Car Image URL</label>
+          <div class="col-sm-10">
+              <input type="text" class="form-control" name="carImage"  placeholder="Enter Car Image URL"  [(ngModel)]="VehiclesObj.carImage">
+          </div>
+      </div>
+      <div class="float-end">
+        <button class="btn btn-outline-dark me-2" (click)="reset()">Reset</button>
+         <button *ngIf="!isEdit" class="btn btn-primary me-2" (click)="onSaveVehicles()">Add Vehicle</button>
+        <button *ngIf="isEdit" class="btn btn-primary me-2" (click)="updateVehicles()">Update</button>
+        <button class="btn btn-primary me-2" (click)="getVehicles()">Load</button>
+
+        </div>
+
+
+     </form>
+ 
+     <hr>
+     <!-- Table to display entered data -->
+     <div class="d-flex justify-content-end">
+        <button class="btn btn-primary" (click)="download()">Download</button>
+       </div>
+     <table   class="table table-striped mt-4 table-bordered" >
+         <thead>
+             <tr class="text-left">
+                 <th>Sr.No</th>
+                 <th>Brand</th>
+                 <th>Model</th>
+                 <th>Reg No</th>
+                 <th>Daily Rate</th>
+                 <th>Actions</th>
+             </tr>
+         </thead>
+         <tbody>
+<tr *ngFor="let arr of vehiclesList;let i=index" class="text-left"> 
+          <td>{{i+1}}</td>
+          <td>{{arr.brand}}</td>
+          <td>{{arr.model}}</td>
+          <td>{{arr.regNo}}</td>
+          <td>{{arr.dailyRate}}</td>
+          <td><button class="btn btn-primary btn-sm" (click)="onEdit(arr)">Edit</button></td>
+     </tr>  
+         </tbody>
+     </table>
+ </div>

@@ -1,0 +1,141 @@
+
+<div class="container-fluid">
+
+     <div class="row d-flex justify-content-between align-items-center mb-2">
+       <div class="col-sm-6">
+         <nav aria-label="breadcrumb">
+           <ol class="breadcrumb cooseText">
+             <li class="breadcrumb-item"><a href="../dashboard_mm.html">Dashboard</a></li>
+
+           </ol>
+         </nav>
+       </div>
+
+
+     </div>
+     <div class="card p-3">
+   <form [formGroup]="studentForm">
+       <div class="row">
+       
+         <div class="col-sm-3">
+           <div class="mb-3">
+             <label for="exampleFormControlInput1" class="form-label">Full Name <span class="text-danger">*</span></label>
+            <input type="text" class="form-control" formControlName="fullName">
+            <div class="text-danger">
+            
+              <span *ngIf="studentForm.controls['fullName'].hasError('required') && studentForm.controls['fullName'].touched" >This is required</span>
+              <span *ngIf="studentForm.controls['fullName'].hasError('minlength') && studentForm.controls['fullName'].touched">
+                Full Name must be at least 6 characters long
+              </span>            </div>
+           </div>
+
+
+
+         </div>
+
+
+         <div class="col-sm-3">
+           <div class="mb-3">
+             <label for="workflowDropdown" class="form-label">City <span class="text-danger">*</span></label>             
+             <select class="form-select" formControlName="city" >
+              <option value="" >Select a city</option>
+         <option *ngFor="let arr of studentList">{{arr.address.city}}</option>
+            </select>
+            <div class="text-danger">
+
+            <span *ngIf="studentForm.controls['city'].touched && studentForm.controls['city'].hasError('required')">
+              Please select a city.
+            </span>
+          </div>
+
+         </div>
+        </div>
+
+
+<!-- 
+         <div class="col-sm-3">
+          <div class="mb-3">
+
+
+            <label class="form-label">Status : <span class="text-danger">*</span></label>
+            <br>
+            <input type="radio" formControlName="isActive" value="3" id="active">
+            <label class="form-label" for="active">Active</label>&nbsp;&nbsp;
+            <input type="radio" formControlName="isActive" value="4" id="inactive">
+            <label class="form-label" for="inactive">Inactive</label>
+            <div class="text-danger">
+
+            <span *ngIf="studentForm.controls['isActive'].touched && studentForm.controls['isActive'].hasError('required')">
+              Please select a status.
+            </span>
+          </div>
+
+          </div>
+        </div> -->
+
+     
+
+    
+         <div class="col-sm-1">
+          <button  class="btn btn-outline-dark mt-4" (click)="onReset()">Reset</button>
+
+
+         </div>
+         
+         <div class="col-sm-1">
+
+           <button  class="btn btn-primary mt-4" (click)="onSave()" >Create</button>
+
+         </div>
+
+
+
+
+
+
+
+       </div>
+     </form>
+
+     </div>
+
+     <div class="card p-3 mt-3">
+          <div class="row">
+            <div class="col-sm-12 cus-Table">
+              <button class="btn btn-primary float-end mb-3">
+                Export to Excel
+              </button>
+              <table  class="table table-bordered table-striped">
+                <thead>
+                  <tr>
+                    <th width="30">#</th>
+                    <th>Full Name</th>
+  
+                    <th>City</th>
+  
+                    <!-- <th>Status?</th> -->
+                    <th width="60">Actions</th>
+                  </tr>
+                </thead>
+                <tbody>
+            <tr *ngFor="let arr of studentList;let i=index">
+              <td>{{i+1}}</td>
+<td>{{arr.name}}</td>
+<td>{{arr.address.city}}</td>
+<!-- <td>  </td> -->
+<td></td>
+
+            </tr>
+  
+  
+                </tbody>
+              </table>
+            </div>
+          </div>
+  
+        </div>
+
+        <!-- <div class="col-md-12">
+          {{formValue.fullName}}
+         </div> -->
+ </div>

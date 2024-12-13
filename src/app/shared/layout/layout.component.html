@@ -1,0 +1,78 @@
+<div class="layout">
+  <!-- Navbar -->
+  <nav class="navbar">
+    <button (click)="toggleSidebar()" class="toggle-btn">
+      <i class="material-icons">menu</i>
+    </button>
+    <h1>Admin</h1>
+    <!-- <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#logoutModal" > -->
+    <button class="btn btn-danger" (click)="open(content)">
+
+      <i class="fa-solid fa-right-from-bracket"></i>
+    </button>
+
+  </nav>
+
+  <!-- Sidebar and Content -->
+  <div class="content-wrapper">
+    <!-- Sidebar -->
+    <aside class="sidebar" [class.collapsed]="isSidebarCollapsed">
+      <ul>
+        <!-- Masters Menu -->
+        <li>
+          <a (click)="toggleSubmenu('masters')">
+            <i class="material-icons">inventory_2</i>
+            <span>Masters</span>
+            <i class="material-icons expand-icon" *ngIf="!isSidebarCollapsed">
+              {{ expandedMenus['masters'] ? 'expand_less' : 'expand_mlore' }}
+            </i>
+          </a>
+          <!-- Submenu for Masters -->
+          <ul class="submenu" *ngIf="expandedMenus['masters']">
+            <li><a routerLink="/customgroup">Custom Group</a></li>
+            <li><a routerLink="/crud">Crud</a></li>
+
+          </ul>
+        </li>
+
+        <!-- Configuration Menu -->
+        <li>
+          <a routerLink="/popupanimations"> <i class="material-icons">settings</i>Configuration</a>
+                   </li>
+
+        <!-- Reports Menu -->
+        <!-- <li> <a>
+            <i class="material-icons">bar_chart</i>
+            <span>Reports</span>
+          </a>
+        </li> -->
+
+        <li>
+          <a routerLink="/report">   <i class="material-icons">bar_chart</i>Reports</a>
+                   </li>
+      </ul>
+    </aside>
+
+    <!-- Content -->
+    <main class="content">
+      <ng-content></ng-content>
+    </main>
+  </div>
+</div>
+
+
+
+
+<!-- Modal Template -->
+<ng-template #content let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title">Are you sure you want to log out?</h4>
+    <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss()">
+    </button>
+  </div>
+
+  <div class="modal-footer">
+    <button type="button" class="btn btn-secondary" (click)="modal.close()">Cancel</button>
+    <button type="button" class="btn btn-danger" (click)="logout(modal)">Logout</button>
+  </div>
+</ng-template>
